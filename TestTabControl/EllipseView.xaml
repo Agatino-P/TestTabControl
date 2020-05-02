@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TestTabControl"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             d:DesignHeight="450" d:DesignWidth="800" mc:Ignorable="d" >
+             d:DesignHeight="450" d:DesignWidth="800" mc:Ignorable="d">
     <DockPanel>
         <StackPanel Width="70">
 
@@ -12,13 +12,14 @@
             <TextBlock Text="{Binding W}" />
             <TextBlock Text="{Binding H}" />
         </StackPanel>
-        <Border Width="100" Height="100" BorderBrush="Black"
-                BorderThickness="1">
-
-            <Ellipse Width="{Binding W}"
-                     Height="{Binding H}"
-                     HorizontalAlignment="Center" VerticalAlignment="Center"
-                     Fill="Blue" />
-        </Border>
+        <Viewbox Width="50" Height="50">
+            <Border Width="100" Height="100" BorderBrush="Black"
+                    BorderThickness="1">
+                <Ellipse Width="{Binding W}"
+                         Height="{Binding H}"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Fill="Blue" />
+            </Border>
+        </Viewbox>
     </DockPanel>
 </UserControl>

@@ -11,13 +11,16 @@
             <TextBlock Text="{Binding W}" />
             <TextBlock Text="{Binding H}" />
         </StackPanel>
-        <Border Width="100" Height="100" BorderBrush="Black"
-                BorderThickness="1">
-            <Rectangle Width="{Binding W}"
-                       Height="{Binding H}"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
-                       Fill="Green" />
-        </Border>
+        <Viewbox Width="50" Height="50">
+
+            <Border Width="100" Height="100" BorderBrush="Black"
+                    BorderThickness="1">
+                <Rectangle Width="{Binding W}"
+                           Height="{Binding H}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Fill="Green" />
+            </Border>
+        </Viewbox>
     </DockPanel>
 
 

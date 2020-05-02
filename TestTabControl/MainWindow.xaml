@@ -11,10 +11,40 @@
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        
+        <Style TargetType="TabControl">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Background="Crimson" Text="{Binding ShapeType}" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style x:Key="YellowTabsStyle" TargetType="TabControl">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Background="Yellow" Text="{Binding ShapeType}" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <DataTemplate x:Key="GreenTabHeaderTemplate">
+            <TextBlock Background="Green" Text="{Binding ShapeType}" />
+        </DataTemplate>
+
+    </Window.Resources>
 
     <DockPanel>
         <ListBox ItemsSource="{Binding Shapes}" />
-        <TabControl />
+        <TabControl DisplayMemberPath="ShapeType" ItemsSource="{Binding ShapeFilteringViewModels}" />
+        <TabControl ItemsSource="{Binding ShapeFilteringViewModels}" />
+        <TabControl ItemsSource="{Binding ShapeFilteringViewModels}" Style="{DynamicResource YellowTabsStyle}" />
+        <TabControl ItemTemplate="{DynamicResource GreenTabHeaderTemplate}" ItemsSource="{Binding ShapeFilteringViewModels}" />
+    
     </DockPanel>
 </Window>

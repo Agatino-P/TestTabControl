@@ -16,7 +16,8 @@ namespace TestTabControl
 
         public ShapeFilteringViewModel(string shapeType)
         {
-            FilteredShapes = new  ObservableCollection<Shape> ( ShapeProvider.GetShapes().Where((s) => s.Name == shapeType) );
+            ShapeType = shapeType;
+            FilteredShapes = new  ObservableCollection<Shape> ( ShapeProvider.GetShapes().Where((s) => s.Name == ShapeType) );
         }
     }
 }

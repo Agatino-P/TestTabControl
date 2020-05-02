@@ -11,5 +11,8 @@
         <DataTemplate DataType="{x:Type local:Ellipse}">
             <local:EllipseView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ShapeFilteringViewModel}">
+            <local:ShapeFilteringView />
+        </DataTemplate>
     </Application.Resources>
 </Application>

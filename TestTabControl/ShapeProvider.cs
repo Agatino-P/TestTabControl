@@ -16,7 +16,7 @@ namespace TestTabControl
             new Rectangle(50, 30),
             new Ellipse(70, 40),
             new Ellipse(50, 50),
-            new Ellipse(0, 40)
+            new Ellipse(10, 40)
             };
             return retColl;
 
