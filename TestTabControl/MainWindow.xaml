@@ -7,19 +7,14 @@
         Title="MainWindow" Width="800" Height="450"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel,
                                          IsDesignTimeCreatable=True}"
-        mc:Ignorable="d">
+        SizeToContent="WidthAndHeight" mc:Ignorable="d">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type local:Rectangle}">
-            <local:RectangleView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type local:Ellipse}">
-            <local:EllipseView />
-        </DataTemplate>
-    </Window.Resources>
+
+
     <DockPanel>
         <ListBox ItemsSource="{Binding Shapes}" />
+        <TabControl />
     </DockPanel>
 </Window>

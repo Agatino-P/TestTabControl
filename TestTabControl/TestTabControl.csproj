@@ -74,6 +74,11 @@
       <DependentUpon>RectangleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shape.cs" />
+    <Compile Include="ShapeFilteringView.xaml.cs">
+      <DependentUpon>ShapeFilteringView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShapeFilteringViewModel.cs" />
+    <Compile Include="ShapeProvider.cs" />
     <Page Include="EllipseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +96,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RectangleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShapeFilteringView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

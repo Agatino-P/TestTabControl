@@ -15,11 +15,7 @@ namespace TestTabControl
 
         public MainWindowViewModel()
         {
-            Shapes.Add(new Rectangle(100, 20));
-            Shapes.Add(new Rectangle(50, 30));
-            Shapes.Add(new Ellipse(70, 40));
-            Shapes.Add(new Ellipse(50, 50));
-            Shapes.Add(new Ellipse(10, 40));
+            Shapes= ShapeProvider.GetShapes();
         }
 
     }
