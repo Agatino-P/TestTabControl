@@ -10,9 +10,10 @@
         SizeToContent="WidthAndHeight" mc:Ignorable="d">
     <Window.DataContext>
         <local:MainWindowViewModel />
+
     </Window.DataContext>
     <Window.Resources>
-        
+
         <Style TargetType="TabControl">
             <Setter Property="ItemTemplate">
                 <Setter.Value>
@@ -32,19 +33,67 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <DataTemplate x:Key="GreenTabHeaderTemplate">
             <TextBlock Background="Green" Text="{Binding ShapeType}" />
         </DataTemplate>
 
+        <DataTemplate x:Key="RectangleContentTemplate">
+            <Viewbox Width="25" Height="25" HorizontalAlignment="Left">
+                <Border Width="100" Height="100" BorderBrush="Black"
+                        BorderThickness="1">
+                    <Rectangle Width="{Binding W}"
+                               Height="{Binding H}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Fill="Green" />
+                </Border>
+            </Viewbox>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EllipseContentTemplate">
+            <Viewbox Width="25" Height="25" HorizontalAlignment="Left">
+                <Border Width="100" Height="100" BorderBrush="Black"
+                        BorderThickness="1">
+                    <Ellipse Width="{Binding W}"
+                             Height="{Binding H}"
+                             HorizontalAlignment="Center" VerticalAlignment="Center"
+                             Fill="Blue" />
+                </Border>
+            </Viewbox>
+        </DataTemplate>
+
+
     </Window.Resources>
 
-    <DockPanel>
-        <ListBox ItemsSource="{Binding Shapes}" />
-        <TabControl DisplayMemberPath="ShapeType" ItemsSource="{Binding ShapeFilteringViewModels}" />
-        <TabControl ItemsSource="{Binding ShapeFilteringViewModels}" />
-        <TabControl ItemsSource="{Binding ShapeFilteringViewModels}" Style="{DynamicResource YellowTabsStyle}" />
-        <TabControl ItemTemplate="{DynamicResource GreenTabHeaderTemplate}" ItemsSource="{Binding ShapeFilteringViewModels}" />
-    
-    </DockPanel>
+    <StackPanel>
+        <DockPanel>
+            <ListBox ItemsSource="{Binding Shapes}" />
+            <TabControl DisplayMemberPath="ShapeType" ItemsSource="{Binding ShapeFilteringViewModels}" />
+            <TabControl ItemsSource="{Binding ShapeFilteringViewModels}" />
+            <TabControl ItemsSource="{Binding ShapeFilteringViewModels}" Style="{DynamicResource YellowTabsStyle}" />
+            <TabControl ItemTemplate="{DynamicResource GreenTabHeaderTemplate}" ItemsSource="{Binding ShapeFilteringViewModels}" />
+        </DockPanel>
+        <DataGrid AutoGenerateColumns="False"
+                  IsSynchronizedWithCurrentItem="True"
+                  ItemsSource="{Binding Shapes}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding W}" Header="W" />
+                <DataGridTextColumn Binding="{Binding H}" Header="H" />
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <ContentControl x:Name="cc" Content="{Binding}" />
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Name}" Value="Rectangle">
+                            <Setter TargetName="cc" Property="ContentTemplate" Value="{DynamicResource RectangleContentTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Name}" Value="Ellipse">
+                            <Setter TargetName="cc" Property="ContentTemplate" Value="{DynamicResource EllipseContentTemplate}" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </StackPanel>
 </Window>
