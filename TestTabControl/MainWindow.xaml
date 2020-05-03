@@ -83,17 +83,38 @@
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <ContentControl x:Name="cc" Content="{Binding}" />
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Name}" Value="Rectangle">
-                            <Setter TargetName="cc" Property="ContentTemplate" Value="{DynamicResource RectangleContentTemplate}" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Name}" Value="Ellipse">
-                            <Setter TargetName="cc" Property="ContentTemplate" Value="{DynamicResource EllipseContentTemplate}" />
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Name}" Value="Rectangle">
+                                        <Setter Property="ContentTemplate" Value="{DynamicResource RectangleContentTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Ellipse">
+                                        <Setter Property="ContentTemplate" Value="{DynamicResource EllipseContentTemplate}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
+
+        <ContentControl Content="{Binding Shapes/}">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Shapes/Name}" Value="Rectangle">
+                            <Setter Property="ContentTemplate" Value="{DynamicResource RectangleContentTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Shapes/Name}" Value="Ellipse">
+                            <Setter Property="ContentTemplate" Value="{DynamicResource EllipseContentTemplate}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+
     </StackPanel>
 </Window>
